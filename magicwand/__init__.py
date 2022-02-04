@@ -25,7 +25,7 @@ class SelectionWindow:
         self._flood_fill_flags = (
             connectivity | cv.FLOODFILL_FIXED_RANGE | cv.FLOODFILL_MASK_ONLY | 255 << 8
         )  # 255 << 8 tells to fill with the value 255
-        cv.namedWindow(self.name)
+        cv.namedWindow(self.name, cv.WINDOW_NORMAL)
         self.tolerance = (tolerance,) * 3
         cv.createTrackbar(
             "Tolerance", self.name, tolerance, 255, self._trackbar_callback
