@@ -84,7 +84,11 @@ class SelectionWindow:
         self._update()
         print("Press [q] or [esc] to close the window.")
         while True:
-            k = cv.waitKey() & 0xFF
+            k = cv.waitKey(100) & 0xFF
             if k in (ord("q"), ord("\x1b")):
+                cv.destroyWindow(self.name)
+                break
+
+            if cv.getWindowProperty(self.name, cv.WND_PROP_VISIBLE) < 1:
                 cv.destroyWindow(self.name)
                 break
